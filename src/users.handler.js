@@ -17,6 +17,23 @@ const User={
         const user=await Users.findOne({_id:id})
         res.status(200).send(user)
     },
+
+    update: async (req, res)=>{
+        const { id }=req.params
+        const user=await Users.findOne({_id:id})
+        Object.assign(user, req.body)
+        await user.save()
+        res.sendStatus(204)
+    },
+
+    delete: async (req, res)=>{
+        const { id }=req.params
+        const user=await Users.findOne({_id:id})
+        if(user){
+            user.deleteOne()
+        }
+        res.sendStatus(204)
+    },
 }
 
 module.exports= User
