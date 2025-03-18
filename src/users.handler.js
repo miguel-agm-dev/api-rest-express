@@ -11,6 +11,12 @@ const User={
         const saveUser =await user.save()
         res.status(201).send(saveUser._id)
     },
+
+    get: async (req, res)=>{
+        const { id }=req.params
+        const user=await Users.findOne({_id:id})
+        res.status(200).send(user)
+    },
 }
 
 module.exports= User

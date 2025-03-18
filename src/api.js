@@ -13,6 +13,7 @@ mongoose.connect('mongodb+srv://miguelagmdev:miguelagmdev@myapp.s5jqc.mongodb.ne
 
 app.get('/api/', user.list)
 app.post('/api/', user.create)
+app.get('/api/:id', user.get)
 
 app.listen(port, ()=>{
     console.log(`El ejemplo se esta ejecutando en el puerto ${port}`)
